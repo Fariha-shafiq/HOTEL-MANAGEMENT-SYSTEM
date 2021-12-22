@@ -7,7 +7,6 @@ package javaapplication63;
 /*
 Reference
 https://www.geeksforgeeks.org/gui-application-for-the-student-management-system/
-
 */
 import javax.swing.*;
 import java.awt.*;
@@ -18,15 +17,17 @@ import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
+import javafx.scene.layout.Border;
 
-public class hotel extends JFrame{
-    
-    
-abstract class close{
-abstract void close();
+public class hotel extends JFrame  {
+   
+   
+abstract class room {
+abstract void roomtype();
+abstract void roomnum();
 }
 
-class Booking extends close { // creating class for booking
+class Booking extends room  { // creating class for booking
 
 private JLabel l1, l2,l3, l4,
 l5, l6, l7, l8,    
@@ -41,12 +42,31 @@ private JTextArea area2, area1;
 private JRadioButton rb1, rb2, rb3,
 rb4, rb5, rb6,
 rb7; 
-
-
 private JFileChooser f1;
 
 
+@Override
+void roomtype(){//creating combobox for room type
 
+String rooms[]
+= { "Luxury Duoble Room", "Deluxe Double Room", "Luxury Single Room","Deluxe Single Room" };
+
+final JComboBox cb1= new JComboBox(rooms);
+
+cb1.setBounds(250, 600, 90, 20);
+cb1.setSize(250, 25);
+
+
+
+}
+@Override
+void roomnum(){
+    String num[]= { "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15" };//combobox for room no
+
+    final JComboBox room_num= new JComboBox(num);
+
+     room_num.setBounds(250, 550, 250, 20);
+}
 // Default constructor to
 // initialize the parameters
 Booking()
@@ -62,18 +82,20 @@ L20.setForeground(Color.WHITE);
 l1 = new JLabel("Payment Method");
 l1.setBounds(550, 120, 250, 20);
 l1.setForeground(Color.WHITE);
+l1.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 
 l2 = new JLabel(
 "Name of the Customer:");
 l2.setBounds(50, 150, 250, 20);
 l2.setForeground(Color.WHITE);
-
+l2.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 tf1 = new JTextField();
 tf1.setBounds(250, 150, 250, 20);
 l3 = new JLabel(
 "Email ID:");
 l3.setForeground(Color.WHITE);
 l3.setBounds(50, 200, 250, 20);
+l3.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 
 tf2 = new JTextField();
 tf2.setBounds(250, 200, 250, 20);
@@ -81,6 +103,7 @@ tf2.setBounds(250, 200, 250, 20);
 l4 = new JLabel("Contact Number:");
 l4.setForeground(Color.WHITE);
 l4.setBounds(50, 250, 250, 20);
+l4.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 
 tf3 = new JTextField();
 tf3.setBounds(250, 250, 250, 20);
@@ -88,6 +111,7 @@ tf3.setBounds(250, 250, 250, 20);
 l5 = new JLabel("City");
 l5.setForeground(Color.WHITE);
 l5.setBounds(50, 300, 250, 20);
+l5.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 
 tf4 = new JTextField();
 tf4.setBounds(250, 300, 250, 20);
@@ -95,21 +119,21 @@ tf4.setBounds(250, 300, 250, 20);
 l6 = new JLabel("Nationality:");
 l6.setForeground(Color.WHITE);
 l6.setBounds(50, 350, 250, 20);
-
+l6.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 tf5 = new JTextField();
 tf5.setBounds(250, 350, 250, 20);
 
 l7 = new JLabel("Address:");
 l7.setForeground(Color.WHITE);
 l7.setBounds(50, 400, 250, 20);
-
+l7.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 area1 = new JTextArea();
 area1.setBounds(250, 400, 250, 90);
 
 l9 = new JLabel("Gender:");
 l9.setForeground(Color.WHITE);
 l9.setBounds(50, 500, 250, 20);
-
+l9.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 JRadioButton r5
 = new JRadioButton(" Male");
 JRadioButton r6
@@ -125,8 +149,9 @@ bg.add(r6);
 l10 = new JLabel("Room Number:");
 l10.setForeground(Color.WHITE);
 l10.setBounds(50, 550, 250, 20);
+l10.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 String num[]
-= { "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15" };//combobox for room no
+= { "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15" };
 
 final JComboBox room_num
 = new JComboBox(num);
@@ -137,7 +162,8 @@ l11 = new JLabel(
 "Room Type");
 l11.setForeground(Color.WHITE);
 l11.setBounds(50, 600, 250, 20);
-//creating combobox for room type
+l11.setFont(new Font("Calibri (Body)",Font.BOLD,15));
+
 String rooms[]
 = { "Luxury Duoble Room", "Deluxe Double Room", "Luxury Single Room","Deluxe Single Room" };
 
@@ -151,6 +177,7 @@ l12 = new JLabel(
 "Room View");
 l12.setForeground(Color.WHITE);
 l12.setBounds(50, 650, 250, 20);
+l12.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 //combobox for room view
 String view[]
 = { "Pool side", "Garden side","Road Side" };
@@ -159,6 +186,7 @@ l13 = new JLabel(
 "Number of Adults:");
 l13.setForeground(Color.WHITE);
 l13.setBounds(50, 700, 250, 20);
+l13.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 
 tf7 = new JTextField();
 tf7.setBounds(250, 700, 250, 20);
@@ -166,9 +194,10 @@ tf7.setBounds(250, 700, 250, 20);
 l14 = new JLabel("Number of Kids (If there are any):");
 l14.setForeground(Color.WHITE);
 l14.setBounds(50, 750, 250, 20);
+l14.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 
 tf8 = new JTextField();
-tf8.setBounds(250, 750, 250, 20);
+tf8.setBounds(300, 750, 200, 20);
 
 ImageIcon i2 = new ImageIcon("2.png");
 JLabel l15
@@ -184,6 +213,7 @@ l8 = new JLabel(
 "Arrival Date:");
 l8.setForeground(Color.WHITE);
 l8.setBounds(800, 170, 250, 20);
+l8.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 
 rb1 = new JRadioButton("Check");
 rb1.setBounds(550, 150, 100, 30);
@@ -248,16 +278,20 @@ list2.setBounds(
 
 JButton Receipt
 = new JButton("Generate Receipt");// this button will generate recipt
-Receipt.setBounds(600, 490, 150, 30);
+Receipt.setBounds(1100, 650, 150, 30);
 Receipt.setBackground(Color.WHITE);
 JButton b2 = new JButton("Reset");//this button will reset recipt
-b2.setBounds(750, 490, 150, 30);
+b2.setBounds(1100, 700, 150, 30);
  b2.setBackground(Color.WHITE);
 JButton Print = new JButton("Print");//this button will print recipt
-Print.setBounds(900, 490, 150, 30);
+Print.setBounds(1100, 750, 150, 30);
  Print.setBackground(Color.WHITE);
+    
 area2 = new JTextArea();// text area for displaying recipt
-area2.setBounds(600, 540, 450, 240);
+area2.setBounds(590, 490, 490, 290);
+    javax.swing.border.Border border = BorderFactory.createLineBorder(Color.BLACK);
+    area2.setBorder(BorderFactory.createCompoundBorder(border,
+            BorderFactory.createEmptyBorder(30, 10, 30, 10)));  
 
 add(L20);
 add(l1);
@@ -342,11 +376,14 @@ tf2.setText("");
 tf3.setText("");
 tf4.setText("");
 tf5.setText("");
+tf7.setText("");
+tf8.setText("");
 }
 });
 
 // Implementing the Print action
 Print.addActionListener(new ActionListener() {
+@Override
 public void actionPerformed(
 ActionEvent e)
 {
@@ -393,6 +430,14 @@ area2.setText(area2.getText()
 + tf5.getText()           // display customer nationality
 + "\n");
 area2.setText(area2.getText()
++ "No. of Adults: "
++ tf7.getText()           // display customer nationality
++ "\n");
+area2.setText(area2.getText()
++ "No. of Kids: "
++ tf8.getText()           // display customer nationality
++ "\n");
+area2.setText(area2.getText()
 + "Arrival Date: "
 +today.getText()  // display arival date
 .toString()
@@ -435,7 +480,7 @@ area2.setText(area2.getText()
 .toString()
 + "\n");
 area2.setText(area2.getText()
-+ "Had chosen: "
++ "For: "
 + list2.getSelectedValue()
 .toString()
 + "\n");
@@ -553,14 +598,15 @@ setVisible(true);
 getContentPane().setBackground(Color.BLACK);
    };
 
-@Override
-void close(){System.exit(0);};  
+
+}
+ 
+
+Booking b3=new Booking();
 
  
-}
-Booking b3=new Booking();
 public static void main(String[] args){
 new hotel();
-}
 
-} 
+ 
+}  }
