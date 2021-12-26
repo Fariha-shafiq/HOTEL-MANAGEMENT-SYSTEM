@@ -17,17 +17,15 @@ import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
-import javafx.scene.layout.Border;
 
 public class hotel extends JFrame  {
-   
-   
-abstract class room {
-abstract void roomtype();
-abstract void roomnum();
+     
+abstract class rooms {
+abstract public void roomtype();
+abstract public void roomnum();
 }
 
-class Booking extends room  { // creating class for booking
+class Booking extends rooms  { // creating class for booking
 
 private JLabel l1, l2,l3, l4,
 l5, l6, l7, l8,    
@@ -46,7 +44,7 @@ private JFileChooser f1;
 
 
 @Override
-void roomtype(){//creating combobox for room type
+public void roomtype(){//creating combobox for room type
 
 String rooms[]
 = { "Luxury Duoble Room", "Deluxe Double Room", "Luxury Single Room","Deluxe Single Room" };
@@ -60,7 +58,7 @@ cb1.setSize(250, 25);
 
 }
 @Override
-void roomnum(){
+public void roomnum(){
     String num[]= { "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15" };//combobox for room no
 
     final JComboBox room_num= new JComboBox(num);
@@ -232,8 +230,8 @@ bg1.add(rb1);
 bg1.add(rb2);
 bg1.add(rb3);
 bg1.add(rb4);
- DateFormat dateFormat = new SimpleDateFormat("dd MMM YYYY");
- JFormattedTextField today = new JFormattedTextField(dateFormat);
+DateFormat dateFormat = new SimpleDateFormat("dd MMM YYYY");
+JFormattedTextField today = new JFormattedTextField(dateFormat);
 today.setBounds(800, 200, 90, 20);
 
 final JLabel label
@@ -288,7 +286,7 @@ Print.setBounds(1100, 750, 150, 30);
  Print.setBackground(Color.WHITE);
     
 area2 = new JTextArea();// text area for displaying recipt
-area2.setBounds(590, 490, 490, 290);
+area2.setBounds(590, 490, 490, 350);
     javax.swing.border.Border border = BorderFactory.createLineBorder(Color.BLACK);
     area2.setBorder(BorderFactory.createCompoundBorder(border,
             BorderFactory.createEmptyBorder(30, 10, 30, 10)));  
@@ -462,15 +460,15 @@ if (rb1.isSelected()) {     //checking condition for payment method
 area2.setText(area2.getText()
 + "Wants to pay through Check \n");
 }
-if (rb2.isSelected()) {
+else if (rb2.isSelected()) {
 area2.setText(area2.getText()
 + "Wants to pay through Paypal\n");
 }
-if (rb3.isSelected()) {
+else if (rb3.isSelected()) {
 area2.setText(area2.getText()
 + "Wants to pay through Cash \n");
 }
-if (rb4.isSelected()) {
+else if (rb4.isSelected()) {
 area2.setText(area2.getText()
 + "Wants to pay through Credit Card \n");
 }
@@ -568,8 +566,10 @@ area2.setText(area2.getText()+"Total amount to be paid is 30 Thousand \n");
 }
 if (e.getSource() == Receipt) {
 try {
-    try (FileWriter fw = new FileWriter("java.txt")) {
+    try (FileWriter fw = new FileWriter("JAVA.txt",true)) {
         fw.write(area2.getText());
+        fw.close();
+        
     }
 }
 catch (IOException ae) {
@@ -577,7 +577,7 @@ System.out.println(ae);
 }
 }
 
-JOptionPane.showMessageDialog(  // display message after bookingof room 
+JOptionPane.showMessageDialog(  // display message after booking of room 
 area2, "ROOM BOOKED SUCCESSFULLY");
 };
 });
