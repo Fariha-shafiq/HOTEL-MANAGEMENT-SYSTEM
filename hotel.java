@@ -47,7 +47,7 @@ private JFileChooser f1;
 public void roomtype(){//creating combobox for room type
 
 String rooms[]
-= { "Luxury Duoble Room", "Deluxe Double Room", "Luxury Single Room","Deluxe Single Room" };
+= { "Luxury Double Room", "Deluxe Double Room", "Luxury Single Room","Deluxe Single Room" };
 
 final JComboBox cb1= new JComboBox(rooms);
 
@@ -163,7 +163,7 @@ l11.setBounds(50, 600, 250, 20);
 l11.setFont(new Font("Calibri (Body)",Font.BOLD,15));
 
 String rooms[]
-= { "Luxury Duoble Room", "Deluxe Double Room", "Luxury Single Room","Deluxe Single Room" };
+= { "Luxury Double Room", "Deluxe Double Room", "Luxury Single Room","Deluxe Single Room" };
 
 final JComboBox cb1
 = new JComboBox(rooms);
