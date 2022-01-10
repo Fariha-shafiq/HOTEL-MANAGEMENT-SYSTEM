@@ -15,8 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.awt.Color;
+import java.util.Date;
 
 public class hotel extends JFrame  {
      
@@ -29,7 +29,7 @@ class Booking extends rooms  { // creating class for booking
 
 private JLabel l1, l2,l3, l4,
 l5, l6, l7, l8,    
-l9, l10, l12,l11,l13,l14, l15,L20; 
+l9, l10, l12,l11,l13,l14, l15,L20,l16,l17; 
 
 private JTextField tf1, tf2, tf3,
 tf4, tf5, tf6,tf7,tf8, tf9,
@@ -230,9 +230,10 @@ bg1.add(rb1);
 bg1.add(rb2);
 bg1.add(rb3);
 bg1.add(rb4);
-DateFormat dateFormat = new SimpleDateFormat("dd MMM YYYY");
-JFormattedTextField today = new JFormattedTextField(dateFormat);
-today.setBounds(800, 200, 90, 20);
+JFormattedTextField tft2 = new JFormattedTextField(DateFormat.getDateInstance(DateFormat.LONG));
+    tft2.setValue(new Date());
+tft2.setBounds(800, 200, 90, 20);
+tft2.setSize(150, 25);
 
 final JLabel label
 = new JLabel();
@@ -240,6 +241,18 @@ label.setBounds(600, 430, 500, 30);
 JButton b = new JButton("Show");//button will display selected item from list
 b.setBounds(950, 435, 80, 30);
  b.setBackground(Color.WHITE);
+ 
+ 
+l16=new JLabel("Room Package");
+l16.setBounds(600,235,170,100);
+l16.setFont(new Font("Calibri (Body)",Font.BOLD,15));
+l16.setForeground(Color.WHITE);
+
+l17=new JLabel("Stay Days");
+l17.setBounds(800,235,170,100);
+l17.setFont(new Font("Calibri (Body)",Font.BOLD,15));
+l17.setForeground(Color.WHITE);
+
 
 final DefaultListModel<String> li1
 = new DefaultListModel<>(); //creating list for room package
@@ -290,7 +303,8 @@ area2.setBounds(590, 490, 490, 350);
     javax.swing.border.Border border = BorderFactory.createLineBorder(Color.BLACK);
     area2.setBorder(BorderFactory.createCompoundBorder(border,
             BorderFactory.createEmptyBorder(30, 10, 30, 10)));  
-
+add(l17);   
+add(l16);
 add(L20);
 add(l1);
 add(l2);
@@ -323,7 +337,7 @@ add(rb3);
 add(rb4);
 add(r5);
 add(r6);
-add(today);
+add(tft2);
 add(cb1);
 add(cb2);
 add(list1);
@@ -437,7 +451,7 @@ area2.setText(area2.getText()
 + "\n");
 area2.setText(area2.getText()
 + "Arrival Date: "
-+today.getText()  // display arival date
++tft2.getText()  // display arival date
 .toString()
 + "\n");
 area2.setText(area2.getText()
@@ -566,7 +580,7 @@ area2.setText(area2.getText()+"Total amount to be paid is 30 Thousand \n");
 }
 if (e.getSource() == Receipt) {
 try {
-    try (FileWriter fw = new FileWriter("JAVA.txt",true)) {
+    try (FileWriter fw = new FileWriter("customerinfo.txt",true)) {
         fw.write(area2.getText());
         fw.close();
         
