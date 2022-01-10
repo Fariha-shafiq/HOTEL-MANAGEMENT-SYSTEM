@@ -580,7 +580,7 @@ area2.setText(area2.getText()+"Total amount to be paid is 30 Thousand \n");
 }
 if (e.getSource() == Receipt) {
 try {
-    try (FileWriter fw = new FileWriter("customerinfo.txt",true)) {
+    try (FileWriter fw = new FileWriter("customerinfo.txt",true)) {  //storing receipt data in file
         fw.write(area2.getText());
         fw.close();
         
